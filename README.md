@@ -13,14 +13,14 @@ Provided API Endpoints
 
 ### Requirements
 
-1. The App should consist of two pages utilizing react navigation or another similiar software of your choice
-1. One page show display the current users crypto holdings
+1. The App should consist of two pages utilizing React navigation or another similiar software of your choice
+1. One page should display the current user's crypto holdings
     1. This should show a user's holdings for all tokens returned by the `/token-prices` endpoint
-    1. The users return % on each coin should be displayed and recalculated every 5 seconds
+    1. The user's `return percentage` on each coin should be displayed and recalculated every 5 seconds
 1. One page should allow the user to BUY crypto 
     1. Allow buying of any of the tokens returned by the `/token-prices` endpoint `("BTC", "LTC", "BCH", "ETH")`
     2. Allow a user to input the quantity purchased
-    3. Current price of the token being purchased for record keeping and return % calculations.
+    3. Current price of the token being purchased for record keeping and `return percentage` calculations.
 2. Finally this app should allow a user to toggle between two users with `user_id` of `1` or `2` and view/purchase crypto with the selected user
     1. **NOTE** These have been predefined in the api and are the only allowed values for `user_id`
 
