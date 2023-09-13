@@ -1,6 +1,7 @@
 import random
 from enum import Enum
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from typing import Dict, List
 
@@ -8,6 +9,10 @@ app = FastAPI(
     title="CryptoFi Frontend Coding Challenge",
 )
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*']
+)
 
 class Balance(BaseModel):
     average_token_price: int = Field(default=0)
