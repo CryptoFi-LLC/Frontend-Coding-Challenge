@@ -1,32 +1,47 @@
 # Coding Challenge Readme
 
-Welcome to the CryptoFi Full-Stack Engineering coding challenge! This challenge is designed to assess your coding skills, problem-solving abilities, and "grit". Before you begin, please take a moment to read through this readme to understand the challenge requirements, instructions, and guidelines.
+Welcome to the CryptoFi Frontend Engineering coding challenge! This challenge is designed to assess your coding skills, problem-solving abilities, and "grit". Before you begin, please take a moment to read through this readme to understand the challenge requirements, instructions, and guidelines.
 
 ## Challenge Description
 
-In this challenge, you will be asked to create a simple api endpoint that will allow a user to get a list of crypto prices, along with the user's balances. This part of the coding challenge will require you to get familiar with libraries such as FastApi, Pydantic, and Dyntastic. 
-The prices should be ordered by the most amount of holdings a user has, for all the coins that the user holds, then alpabetically.
+For this challenge, you will be asked to create an application that allows one of two predefined users to purchase crypto and view their holdings. This app will be written with React and typescript and any other libraries of your choice. This app has been dockerized and will need to communicate with a mock api running locally. Documentation for this can be found at [localhost:8000/docs](http://localhost:8000/docs).
 
-For the frontend part of the coding challenge, you will be asked to display the cryptocurrencies in order. This part of the coding challenge will require you to get familiar with React and typescript.
-We should also be able to switch between the 2 users available. This can be done with a dropdown or a button. We expect to see the use of [context](https://react.dev/reference/react/useContext) for this part of the challenge.
+Provided API Endpoints
+* `GET /token-prices` - get current list of token prices
+* `POST /buy-order` - create a buy order for a user
+* `GET /balances` - get a list of balances for a user
 
 ### Requirements
 
-- A GET route that returns ordered prices and balances 
-  - For example - I pass in User `1`, I will receive the user's balances for User `1`
-- List out all prices and balances on the frontend
-  - Coins should be ordered by the most amount of holdings a user has, for all the coins that the user holds, then alpabetically.
-- List out the 2 users available and be able to switch back and forth between them
-  - This can be done with a dropdown or a button
-  - The balances shown should update when switching between users
+1. The App should consist of two pages utilizing react navigation or another similiar software of your choice
+1. One page show display the current users crypto holdings
+    1. This should show a user's holdings for all tokens returned by the `/token-prices` endpoint
+    1. The users return % on each coin should be displayed and recalculated every 5 seconds
+1. One page should allow the user to BUY crypto 
+    1. Allow buying of any of the tokens returned by the `/token-prices` endpoint `("BTC", "LTC", "BCH", "ETH")`
+    2. Allow a user to input the quantity purchased
+    3. Current price of the token being purchased for record keeping and return % calculations.
+2. Finally this app should allow a user to toggle between two users with `user_id` of `1` or `2` and view/purchase crypto with the selected user
+    1. **NOTE** These have been predefined in the api and are the only allowed values for `user_id`
 
+
+### Evaluation Criteria
+
+Your solution will be evaluated based on the following criteria:
+
+- **Functionality** (:star::star::star::star::star:): Does your code solve the problem as described in the challenge?
+- **Code Quality** (:star::star::star::star::star:): Is your code well-organized, readable, and maintainable?
+- **State Management** (:star::star::star::star:): How do you choose to handle state management (data, ui, etc).
+- **Testing** (:star::star:): Is a complex piece of the application tested? (**Note**: this is more to demonstrate testing abilities, no need to test the entire app)
+- **Styling** (:star:): Is the app **minimally styled**? 
+- **Documentation** (:star:): Have you provided clear and concise comments where necessary?
 
 ## Getting Started
 
 Follow these steps to get started with the challenge:
 
-1. **Fork**: Start by forking this repository to your own GitHub account.
-1. **Clone**: Clone the forked repository to your local machine:
+1. **Clone**: Clone the forked repository to your local machine.
+1. **New Private Repo**: Create a new private repo on your personal github account from the cloned coding challenge repo.
 1. **Local Environment Setup**:
    - Ensure Docker is installed and running on your machine. For Mac users, the easiest way to do this is by downloading [Docker Desktop](https://www.docker.com/products/docker-desktop/)
    - Ensure `Make` is installed on your computer. For Mac Users this should already be pre installed
@@ -34,13 +49,11 @@ Follow these steps to get started with the challenge:
    - **Note:** these commands should be run in a terminal window from the root of the project.
    - `make run` - start api
    - `make stop` - stops api and removes database
-   - `make bash` - opens terminal window inside running api docker container. This is useful for running the test suite directly from the running container vs using `make run-testsuite`. This is an advanced command.
    - `make destroy` - cleans all unused docker containers from your machine. This should only be used too free up memory post code challenge completion.
 1. **Whats Provided**
    - A Dockerized API which will run on [localhost:8000](http://localhost:8000)
    - Autogenerated api docs for testing [localhost:8000/docs](http://localhost:8000/docs)
    - A React Frontend which will run on [localhost:3000](http://localhost:3000)
-   - A Local DynamoDb Gui for viewing data in the database [http://localhost:8001/](http://localhost:8001/)
 
 ## Submission Guidelines
 
@@ -52,33 +65,16 @@ To submit your solution, follow these steps:
 1. **Loom Video**: Create a short [loom video](https://www.loom.com/) (5 minutes or less) describing your approach and demoing the coding challenge. 
 1. **Email**: Once complete, please reach out to [Becca](mailto:becca@cryptofi.tech) our HR representive with the loom video attached and we will be in touch!
 
-In your pull request, include the following:
-
-- A brief description of the approach you took to solve the challenge.
-- Any relevant notes, assumptions, or trade-offs you made during the development process.
-
-## Evaluation Criteria
-
-Your solution will be evaluated based on the following criteria:
-
-- **Functionality**: Does your code solve the problem as described in the challenge?
-- **Code Quality**: Is your code well-organized, readable, and maintainable?
-- **Efficiency**: Is your solution optimized for performance and resource usage? 
-- **Edge Cases**: Have you considered edge cases and potential error scenarios?
-- **Documentation**: Have you provided clear and concise comments where necessary?
-
 ## Resources
 
 - [Fast Api Documentation](https://fastapi.tiangolo.com/)
 - [Pydantic Documentation](https://docs.pydantic.dev/latest/)
-- [Dyntastic Documentation](https://github.com/nayaverdier/dyntastic)
-- [What is DynamoDb](https://medium.com/swlh/what-is-dynamodb-fbb3f6d14f18)
 - [React Documentation](https://react.dev/reference/react)
 - [Typescript Documentation](https://www.typescriptlang.org/docs/handbook/intro.html)
 
 ## Contact
 
-If you have any questions or need clarification about the challenge, feel free to reach out to us at [ramsey@cryptofi.tech](mailto:ramsey@cryptofi.tech).
+If you have any questions or need clarification about the challenge, feel free to reach out to us at [alex@cryptofi.tech](mailto:alex@cryptofi.tech).
 
 Good luck and we are excited to see what you come up with!
 

@@ -11,7 +11,6 @@ WORKDIR /app
 COPY /api/requirements.txt .
 COPY /api/src ./src
 COPY /docker ./docker
-COPY /api/data ./data
 
 
 # Install pip requirements
